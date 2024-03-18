@@ -1,6 +1,6 @@
 <div class="ekart-product-container">
-  <app-search></app-search>
-  <app-product-list></app-product-list>
+  <app-search (searchTextChanged)="setSearchText($event)"></app-search>
+  <app-product-list [searchText]="searchText"></app-product-list>
   <!-- <div *ngFor="let item of listOfString">
     <p>Current Value of items: {{item}} </p>
   </div> -->
@@ -22,6 +22,10 @@
     }}
   </p>
   <br/>
+
+
+
+  
 
   <button (click)="decrementCartValue()">-</button>
   <span>{{addToCart}}</span>

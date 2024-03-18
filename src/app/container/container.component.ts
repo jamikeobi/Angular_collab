@@ -8,4 +8,9 @@ import { log } from 'console';
 })
 export class ContainerComponent {
   listOfString: string[] = ['Mark', 'John', 'James', 'Peter', 'Jamike'];
+
+  searchText: string = '';
+  setSearchText(value: string){
+    this.searchText = value;
+  }
 }
