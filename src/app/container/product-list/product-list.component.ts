@@ -1,0 +1,218 @@
+import { Component, Input } from '@angular/core';
+// import { __values } from 'tslib';
+import { Product } from '../../Models/product';
+
+
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrl: './product-list.component.css'
+})
+export class ProductListComponent {
+// Dummy products array
+
+selectedProduct: Product;
+
+  Product = [
+  {
+    id: 1,
+    name: 'ITEL P37',
+    description: 'Itel P37, 3GB RAM, 32GB ROM',
+    brand: 'Brand A',
+    gender: 'Male',
+    category: 'Phones',
+    size: 'Medium',
+    color: ['Blue', 'Purple', 'Black'],
+    price: 80,
+    discountPrice: 3,
+    is_in_inventory: true,
+    items_left: 10,
+    imageURL: '../../assets/images/itel.jpg',
+    slug: 'product-1',
+  },
+  {
+    id: 2,
+    name: 'Iphone 11',
+    description: 'Iphone 11: 64GB ROM',
+    brand: 'Brand B',
+    gender: 'Female',
+    category: 'Shoes',
+    size: '7',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 49.99,
+    is_in_inventory: true,
+    items_left: 5,
+    imageURL: '../../assets/images/iphone.webp',
+    slug: 'product-2',
+  },
+  {
+    id: 3,
+    name: 'Samsung s24',
+    description: 'Samaung S24, 8GB RAM, 128GB ROM',
+    brand: 'Brand C',
+    gender: 'Unisex',
+    category: 'Phone',
+    size: 'One Size',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 49.99,
+    discountPrice: 3,
+    is_in_inventory: false,
+    items_left: 0,
+    imageURL: '../../assets/images/samsung.jpg',
+    slug: 'product-3',
+  },
+  {
+    id: 4,
+    name: 'Infinix Smart 8',
+    description: '4GB RAM, 64GB ROM',
+    brand: 'Brand AB',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 59.99,
+    is_in_inventory: true,
+    items_left: 10,
+    imageURL: '../../assets/images/infinix.png',
+    slug: 'product-1',
+  },
+  {
+    id: 5,
+    name: 'OnePlus 10 pro',
+    description: '16GB RAM, 256GB ROM',
+    brand: 'Brand ABC',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 332,
+    discountPrice: 3,
+    is_in_inventory: true,
+    items_left: 10,
+    imageURL: '../../assets/images/oneplus.jpg',
+    slug: 'product-1',
+  },
+  {
+    id: 6,
+    name: 'Iphone 11',
+    description: 'Iphone 11, 4GB RAM 64GB ROM',
+    brand: 'Brand A',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 69.99,
+    is_in_inventory: false,
+    items_left: 10,
+    imageURL: '../../assets/images/iphone.webp',
+    slug: 'product-1',
+  },
+  {
+    id: 7,
+    name: 'Samsung S24',
+    description: '8GB RAM, 128GB ROM',
+    brand: 'Brand ABCDE',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 89.99,
+    is_in_inventory: true,
+    items_left: 10,
+    imageURL: '../../assets/images/samsung.jpg',
+    slug: 'product-1',
+  },
+  {
+    id: 8,
+    name: 'Iphone 11',
+    description: 'Iphone 11, 4GB RAM, 64GB ROM',
+    brand: 'Brand A',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 59.99,
+    discountPrice: 3,
+    is_in_inventory: true,
+    items_left: 10,
+    imageURL: '../../assets/images/iphone.webp',
+    slug: 'product-1',
+  },
+  {
+    id: 9,
+    name: 'Samsung S24',
+    description: '8GB RAM, 258GB ROM',
+    brand: 'Brand ABCDEF',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 899.99,
+    is_in_inventory: true,
+    items_left: 10,
+    imageURL: '../../assets/images/samsung.jpg',
+    slug: 'product-1',
+  },
+  {
+    id: 10,
+    name: 'Itel P37',
+    description: 'Itel P37, 4GB RAM, 32GB ROM',
+    brand: 'Brand AD',
+    gender: 'Male',
+    category: 'Clothing',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 209.99,
+    discountPrice: 3,
+    is_in_inventory: false,
+    items_left: 10,
+    imageURL: '../../assets/images/itel.jpg',
+    slug: 'product-1',
+  },
+  {
+    id: 10,
+    name: 'OnePlus 10 PRO',
+    description: '16GB RAM, 256GB ROM',
+    brand: 'Brand AD',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 209.99,
+    discountPrice: 3,
+    is_in_inventory: false,
+    items_left: 10,
+    imageURL: '../../assets/images/oneplus.jpg',
+    slug: 'product-1',
+  },
+  {
+    id: 10,
+    name: 'Itel P37',
+    description: '4GB RAM, 32GB ROM',
+    brand: 'Brand AD',
+    gender: 'Male',
+    category: 'Phone',
+    size: 'Medium',
+    color: ['blue', 'orange', 'black', 'red'],
+    price: 209.99,
+    discountPrice: 3,
+    is_in_inventory: false,
+    items_left: 10,
+    imageURL: '../../assets/images/itel.jpg',
+    slug: 'product-1',
+  }
+];
+
+@Input()
+searchText: string = '';
+
+  totalProductCount = this.Product.length;
+  totalInStock = this.Product.filter(p => p.is_in_inventory === true).length;
+  totalOutOfStock = this.Product.filter(p => p.is_in_inventory === false).length;
+
+  selectedFilterRadioButton: string = 'all';
+  onFilterChange(value: string){
+    console.log(value);
+    this.selectedFilterRadioButton = value;
+  }
+}
